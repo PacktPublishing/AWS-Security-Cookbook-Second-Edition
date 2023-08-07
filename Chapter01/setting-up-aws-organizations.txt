@@ -1,0 +1,39 @@
+aws organizations create-account \
+--email awsseccb_sandbox2@cloudericks.com \
+--account-name awsseccb-sandbox-2 \
+--profile awssecadmin
+
+aws organisations describe-create-account-status \
+--create-account-request-id car-6582b2c63be845ebaa474c9268cea8c1 \
+--profile awssecadmin
+
+aws organisation's list-parents \
+--child-id 206722961012 \
+--profile awssecadmin
+
+aws organizations create-organizational-unit \
+--parent-id r-bim7 \
+--name Workloads \
+--profile awssecadmin
+
+aws organizations move-account \
+--account-id 206722961012 \
+--source-parent-id r-bim7 \
+--destination-parent-id ou-bim7-0s1nqy2w \
+--profile awssecadmin
+
+aws organizations list-parents \
+--child-id 206722961012 \
+--profile awssecadmin
+
+aws organizations list-children \
+--parent-id r-bim7 \
+--child-type ORGANIZATIONAL_UNIT \
+--profile awssecadmin
+
+aws organizations describe-organization \
+--profile awssecadmin
+
+aws organizations describe-organizational-unit \
+--organizational-unit-id ou-bim7-0s1nqy2w \
+--profile awssecadmin
