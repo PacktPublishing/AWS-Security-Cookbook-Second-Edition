@@ -1,0 +1,11 @@
+aws iam create-policy \
+--policy-name MyS3ListPolicyFromCLI \
+--policy-document file://s3-list-all-my-buckets-policy.json \
+--profile AwsSecCbAdmin
+
+aws iam attach-group-policy \
+--group-name awsseccb_users \
+--policy-arn arn:aws:iam::207849759248:policy/MyS3ListPolicyFromCLI \
+--profile AwsSecCbAdmin
+
+aws s3 ls --profile AwsSecCbUser

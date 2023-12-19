@@ -1,0 +1,32 @@
+aws iam create-role \
+    --role-name S3ReadOnlyRoleCLI \
+    --assume-role-policy-document file://trust-policy.json \
+    --profile AWSSecCBAdmin1D
+
+aws iam attach-role-policy \
+    --role-name S3ReadOnlyRoleCLI \
+    --policy-arn arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess \
+    --profile AWSSecCBAdmin1D
+
+aws iam create-policy \
+    --policy-name AssumeRole_Sandbox2_S3ReadOnly_CLI \
+    --policy-document file://assume-role-policy-cli.json \
+    --profile AWSSecCBAdmin1S
+
+aws sts assume-role \
+    --role-arn role-arn \
+    --role-session-name role-session-name \
+    --profile AWSSecCBUser1S
+
+Example: 
+aws sts assume-role \
+    --role-arn arn:aws:iam::206722961012:role/S3ReadOnlyRoleCLI \
+    --role-session-name assume-role-test1 \
+    --profile AWSSecCBUser1S
+
+aws s3 ls \
+    --access-key-id <AccessKeyId> \
+    --secret-access-key <SecretAccessKey> \
+    --session-token <SessionToken>
+
+Example: 

@@ -1,0 +1,33 @@
+{ 
+
+  "Id": "Policy1560416549842", 
+
+  "Version": "2012-10-17", 
+
+  "Statement": [ 
+
+    { 
+
+      "Sid": "ListAllBuckets", 
+
+      "Action": [ 
+
+        "s3:ListBucket" 
+
+      ], 
+
+      "Effect": "Allow", 
+
+      "Resource": "arn:aws:s3:::awsseccbbucketpolicy", 
+
+      "Principal": { 
+
+        "AWS": "arn:aws:iam::207849759248:user/awsseccb_user1" 
+
+      } 
+
+    } 
+
+  ] 
+
+} 

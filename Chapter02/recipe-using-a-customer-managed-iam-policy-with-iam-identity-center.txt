@@ -1,0 +1,78 @@
+Command as given in the book:
+aws sso-admin create-permission-set \ 
+    --instance-arn <Your-SSO-Instance-ARN> \ 
+    --name MyS3ListAllBucketsPermissionCLI \ 
+    --description "S3 List All Buckets Permission" \ 
+    --session-duration "PT1H" \ 
+    --profile AwsSecCbAdmin 
+
+Example:
+aws sso-admin create-permission-set \
+    --instance-arn arn:aws:sso:::instance/ssoins-7223c406a1331fac \
+    --name MyS3ListAllBucketsPermissionCLI \
+    --description "S3 List All Buckets Permission" \
+    --session-duration "PT1H" \
+    --profile AwsSecCbAdmin
+
+
+Command as given in the book:   
+aws sso-admin attach-customer-managed-policy-reference-to-permission-set \ 
+    --instance-arn <Your-SSO-Instance-ARN> \ 
+    --permission-set-arn <Your-permission-set-ARN> \ 
+    --customer-managed-policy-reference Name=MyS3ListAllBucketsPolicy \ 
+    --profile AwsSecCbAdmin 
+
+Example: 
+aws sso-admin attach-customer-managed-policy-reference-to-permission-set \
+    --instance-arn arn:aws:sso:::instance/ssoins-7223c406a1331fac \
+    --permission-set-arn arn:aws:sso:::permissionSet/ssoins-7223c406a1331fac/ps-fbf56a222e68cf94 \
+    --customer-managed-policy-reference Name=MyS3ListAllBucketsPolicy \
+    --profile AwsSecCbAdmin
+
+
+Command as given in the book:
+aws sso-admin create-account-assignment \
+    --instance-arn <Your-SSO-Instance-ID> \
+    --permission-set-arn <Your-Permission-Set-ARN> \
+    --target-id <Child-Account-ID> \
+    --target-type AWS_ACCOUNT \
+    --principal-id <Your-Group-ID> \
+    --principal-type GROUP \
+    --profile AwsSecCbAdmin
+
+Example: 
+aws sso-admin create-account-assignment \
+    --instance-arn arn:aws:sso:::instance/ssoins-7223c406a1331fac \
+    --permission-set-arn arn:aws:sso:::permissionSet/ssoins-7223c406a1331fac/ps-fbf56a222e68cf94 \
+    --target-id 207849759248 \
+    --target-type AWS_ACCOUNT \
+    --principal-id 2438c478-7071-7098-2a92-3bcfe92164f5 \
+    --principal-type GROUP \
+    --profile AwsSecCbAdmin
+
+
+Command as given in the book:
+aws sso-admin list-account-assignments \
+    --instance-arn <Your-SSO-Instance-ARN> \
+    --account-id <Child-Account-ID> \
+    --permission-set-arn <Your-Permission-Set-ARN> \
+    --profile AwsSecCbAdmin
+
+Example: 
+aws sso-admin list-account-assignments \
+    --instance-arn arn:aws:sso:::instance/ssoins-7223c406a1331fac \
+    --account-id 207849759248 \
+    --permission-set-arn arn:aws:sso:::permissionSet/ssoins-7223c406a1331fac/ps-fbf56a222e68cf94 \
+    --profile AwsSecCbAdmin
+
+
+Command as given in the book:
+aws sso login --profile AwsSecCbUser1
+
+
+Command as given in the book:
+aws s3 ls --profile AwsSecCbUser1
+
+
+Command as given in the book:
+aws sso logout --profile AwsSecCbUser1
