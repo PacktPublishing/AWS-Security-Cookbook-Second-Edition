@@ -14,8 +14,8 @@ aws iam create-policy \
     --profile AWSSecCBAdmin1S
 
 aws sts assume-role \
-    --role-arn role-arn \
-    --role-session-name role-session-name \
+    --role-arn ROLE_ARN \
+    --role-session-name SESSION_NAME \
     --profile AWSSecCBUser1S
 
 Example: 
@@ -30,3 +30,20 @@ aws s3 ls \
     --session-token <SessionToken>
 
 Example: 
+aws s3 ls \
+    --access-key-id ASIATAINGBZ2BZXIZ6V5 \
+    --secret-access-key vNmSv4EheyhH7tVeMn1GA+jgiXPn3NmR7oQ088+4 \
+    --session-token IQoJb3JpZ2luX2VjEFMaCXVzLWVhc3QtMSJGMEQCICZUN13f6Y3tfWXGY+iM8YjcmSR3HqURlplE7UOHbN0OAiBBihm9E7RspZW9KqKQoh9eiO7rEu+689AiyhgBFqJHVyqeAghbEAAaDDIwNjcyMjk2MTAxMiIMgIFeRb7SwxmerFAxKvsBBhStVVEFYAoPR7OCWHMIWzNRw42X98gFncyHg/of52LAO43YPGr7BqnYULVqcIXPV/4KvhVebWGpTYkfYRcPaOkL9zg3MYI+70Etj23gYpDP51s6uV409tQMwRwjXvDL6lKwwAatUZKRXRImlelCSImUEGdthbT+R02+uxxrcWyhogdqcVqZzk7sM7WMis3UjURBmj6N7Z35BnDe92cYLcxTfSpakPRc+bDdOu0FLw2W8s8f36SJUWzxz0/6i0WQi3Aj5/bYmH+XZPMHRWORjiIlar4O9JkazX895Oe/xQnzfQMAaN4AAnmojjgVS5kF4uTMMSPFC90j4F0wlpr6qAY6ngHGSY8t6AkpMhLb4jcg8wFvrCt78nldvYwDgmH3k4ibSoM91nkTSE65MeK1YOhQ4wXVk81REwWXmlWMdP5uHCK4MAQqP9BDdFDHiy/4Y+oavgjJXOW1oCFh/6bdLlRwPOYoYEsCYtZnpgF/IW2nYZ7+PoU9bOR5Zk5d6nEHKhasnZqFR0y7f7DVA+zkt6tSq60c47aDIEf9de2MXZzvhQ== 
+
+
+aws con
+
+AWS_ACCESS_KEY_ID=ASIATAINGBZ2BZXIZ6V5
+AWS_SECRET_ACCESS_KEY=vNmSv4EheyhH7tVeMn1GA+jgiXPn3NmR7oQ088+4
+AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEFMaCXVzLWVhc3QtMSJGMEQCID917tV7EqNbqEd62vYQfzVkphsgLoSNyw6pU4OQ2fyWAiBHWB6ifyP5z6TrRzgKaybdNzIfpvDi/zoaMXODBPpfmCqeAghcEAAaDDIwNjcyMjk2MTAxMiIMEkOUqqH/SnxM9mu7KvsBwaNr5DcaGFp+lV3CVgLczQo4Bk1bmPdCgNe3ouYgMbtmqee06uajxqwGdV0/pgT96eYsjZlyDzRD17AkfnPfwhOl2S5Gx56Ceicftu/qktKnx+jwgGn45XmDDlCMpy+OLgUezkeQJYpWMitnsB56radNSORloww1zzZCyTwwFoGjbzPH2aJxocr8cM8FM3VRIk3jYLWq9ZG3nhPFSC5aRgHAEgkejIA7HZ7IzthA3ZZ1pJCyfI+2ntoEGBxBbO6FLKL4bRttaeXXuYDNmzqwC0Lw8XHgMz6zIkSixhPWoaFq7Ft+ntRAYvWJ8IfwwGz+M5rvXSI3p+CfPBgw6qP6qAY6ngEaeCk1vrmp8/VH4BOm+go8x95z5UzeaJtnRR1Wew0/xc5C2cHbsbU4+NGYSYUGwpTRJO7dj1UdpLm/d7KLQj1J95miRwzg1xTcpE9G+tSsPFN49R9wgjdsZQeSiZz83zEKg6FntZ6V7EedCllu4SsOfosd70JssZiejUfBiNrsCbxmXqec1B+3D3im9Z7zfP6MzOOoc7h2T5szc8MB0g==
+
+export AWS_ACCESS_KEY_ID=<Value of the AccessKeyID>
+
+export AWS_SECRET_ACCESS_KEY=<Value of the SecretAccessKey>
+
+export AWS_SESSION_TOKEN=<Value SessionToken>

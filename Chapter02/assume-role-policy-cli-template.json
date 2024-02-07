@@ -3,6 +3,6 @@
     "Statement": {
       "Effect": "Allow",
       "Action": "sts:AssumeRole",
-      "Resource": "arn:aws:iam::DESTINATION_ACCOUNT_ID:role/AmazonS3ReadOnlyAccessRole"
+      "Resource": "arn:aws:iam::DESTINATION_ACCOUNT_ID:role/S3ReadOnlyRoleCLI"
     }
 }
