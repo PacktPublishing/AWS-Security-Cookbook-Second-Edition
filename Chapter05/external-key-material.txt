@@ -1,0 +1,11 @@
+For SHA-256 (How to do it)
+
+openssl rand -out ExternalKeyMaterialPlaintext.bin 32
+
+openssl pkeyutl -encrypt -in ExternalKeyMaterialPlaintext.bin -out ExternalKeyMaterialEncrypted.bin -inkey WrappingPublicKey.bin -keyform DER -pubin -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha256 -pkeyopt rsa_mgf1_md:sha256 
+
+For SHA-1 (There's more): 
+
+openssl rand -out ExternalKeyMaterialPlaintext.bin 32
+
+openssl pkeyutl -encrypt -in ExternalKeyMaterialPlaintext.bin -out ExternalKeyMaterialEncrypted.bin -inkey WrappingPublicKey.bin -keyform DER -pubin -pkeyopt rsa_padding_mode:oaep -pkeyopt rsa_oaep_md:sha1 

@@ -1,0 +1,12 @@
+openssl genrsa -aes256 -out customerCA.key 2048
+
+openssl req -new -x509 -days 3652 -key customerCA.key -out customerCA.crt 
+
+openssl x509 -req -days 3652 -in cluster-2i67czpb6yy_ClusterCsr.csr -CA customerCA.crt -CAkey customerCA.key -CAcreateserial -out cluster-2i67czpb6yy_ClusterCsr.crt
+
+scp -i ec2forhsm.pem customerCA.crt ec2-user@ec2-54-172-128-95.compute-1.amazonaws.com:/home/ec2-user 
+
+ssh -i ec2forhsm.pem ec2-user@ec2-54-172-128-95.compute-1.amazonaws.com 
+
+sudo dnf update
+
