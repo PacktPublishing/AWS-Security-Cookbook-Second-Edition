@@ -1,0 +1,21 @@
+openssl genrsa -aes256 -out customerCA.key 2048
+
+openssl req -new -x509 -days 3652 -key customerCA.key -out customerCA.crt 
+
+openssl x509 -req -days 3652 -in cluster-2i67czpb6yy_ClusterCsr.csr -CA customerCA.crt -CAkey customerCA.key -CAcreateserial -out cluster-2i67czpb6yy_ClusterCsr.crt
+
+scp -i ec2forhsm.pem customerCA.crt ec2-user@ec2-54-172-20-192.compute-1.amazonaws.com:/home/ec2-user 
+
+ssh -i ec2forhsm.pem ec2-user@ec2-54-172-20-192.compute-1.amazonaws.com 
+
+sudo yum update
+
+wget https://s3.amazonaws.com/cloudhsmv2-software/CloudHsmClient/EL7/cloudhsm-client-latest.el7.x86_64.rpm
+
+sudo yum install ./cloudhsm-client-latest.el7.x86_64.rpm
+
+sudo /opt/cloudhsm/bin/configure -a 172.31.36.115 
+
+sudo cp /home/ec2-user/customerCA.crt /opt/cloudhsm/etc/
+
+sudo /opt/cloudhsm/bin/cloudhsm_mgmt_util /opt/cloudhsm/etc/cloudhsm_mgmt_util.cfg
