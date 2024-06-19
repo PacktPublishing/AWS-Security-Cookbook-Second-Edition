@@ -1,0 +1,16 @@
+{
+    "Sid": "AllowGuardDutyKey",
+    "Effect": "Allow",
+    "Principal": {
+        "Service": "guardduty.amazonaws.com"
+    },
+    "Action": "kms:GenerateDataKey",
+    "Resource": "arn:aws:kms:Region1:444455556666:key/KMSKeyId",
+    "Condition": {
+        "StringEquals": {
+            "aws:SourceAccount": "123456789012",
+            "aws:SourceArn": "arn:aws:guardduty:Region2:123456789012:detector/SourceDetectorID"
+        }
+    }
+}
+

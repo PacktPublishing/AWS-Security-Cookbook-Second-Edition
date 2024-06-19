@@ -1,0 +1,76 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowGuardDutyGetBucketLocation",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:GetBucketLocation",
+            "Resource": "arn:aws:s3:::myBucketName",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "123456789012",
+                    "aws:SourceArn": "arn:aws:guardduty:Region:123456789012:detector/SourceDetectorID"
+                }
+            }
+        },
+        {
+            "Sid": "AllowGuardDutyPutObject",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::myBucketName/[optional prefix]/*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:SourceAccount": "123456789012",
+                    "aws:SourceArn": "arn:aws:guardduty:Region:123456789012:detector/SourceDetectorID"
+                }
+            }
+        },
+        {
+            "Sid": "DenyUnencryptedUploads",
+            "Effect": "Deny",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::myBucketName/[optional prefix]/*",
+            "Condition": {
+                "StringNotEquals": {
+                    "s3:x-amz-server-side-encryption": "aws:kms"
+                }
+            }
+        },
+        {
+            "Sid": "DenyIncorrectHeader",
+            "Effect": "Deny",
+            "Principal": {
+                "Service": "guardduty.amazonaws.com"
+            },
+            "Action": "s3:PutObject",
+            "Resource": "arn:aws:s3:::myBucketName/[optional prefix]/*",
+            "Condition": {
+                "StringNotEquals": {
+                    "s3:x-amz-server-side-encryption-aws-kms-key-id": "arn:aws:kms:Region:444455556666:key/KMSKeyId"
+                }
+            }
+        },
+        {
+            "Sid": "DenyNon-HTTPS",
+            "Effect": "Deny",
+            "Principal": "*",
+            "Action": "s3:*",
+            "Resource": "arn:aws:s3:::myBucketName/[optional prefix]/*",
+            "Condition": {
+                "Bool": {
+                    "aws:SecureTransport": "false"
+                }
+            }
+        }
+    ]
+}
+
