@@ -1,39 +1,30 @@
-aws organizations create-organizational-unit \
---parent-id r-bim7 \
---name Workloads \
---profile awssecadmin
+# This script contains AWS CLI commands to manage AWS Organizations.
+# Ensure you have the AWS CLI installed and configured with the appropriate profile before running these commands.
+# Replace placeholder values (like IDs and emails) with your actual data where necessary.
 
-aws organizations create-account \
---email awsseccb_sandbox2@cloudericks.com \
---account-name awsseccb-sandbox-2 \
---profile awssecadmin
+# Create an organizational unit
+aws organizations create-organizational-unit --parent-id r-bim7 --name Workloads --profile awssecadmin
 
-aws organisations describe-create-account-status \
---create-account-request-id car-6582b2c63be845ebaa474c9268cea8c1 \
---profile awssecadmin
+# Create a new AWS account
+aws organizations create-account --email awsseccb_sandbox2@cloudericks.com --account-name awsseccb-sandbox-2 --profile awssecadmin
 
-aws organizations list-parents \
---child-id 206722961012 \
---profile awssecadmin
+# Describe the status of the create account request
+aws organizations describe-create-account-status --create-account-request-id car-6582b2c63be845ebaa474c9268cea8c1 --profile awssecadmin
 
-aws organizations move-account \
---account-id 206722961012 \
---source-parent-id r-bim7 \
---destination-parent-id ou-bim7-0s1nqy2w \
---profile awssecadmin
+# List the parents of the specified account
+aws organizations list-parents --child-id 206722961012 --profile awssecadmin
 
-aws organizations list-parents \
---child-id 206722961012 \
---profile awssecadmin
+# Move an account to a new organizational unit
+aws organizations move-account --account-id 206722961012 --source-parent-id r-bim7 --destination-parent-id ou-bim7-0s1nqy2w --profile awssecadmin
 
-aws organizations list-children \
---parent-id r-bim7 \
---child-type ORGANIZATIONAL_UNIT \
---profile awssecadmin
+# List the parents of the specified account again to verify the move
+aws organizations list-parents --child-id 206722961012 --profile awssecadmin
 
-aws organizations describe-organization \
---profile awssecadmin
+# List the children organizational units of the specified parent
+aws organizations list-children --parent-id r-bim7 --child-type ORGANIZATIONAL_UNIT --profile awssecadmin
 
-aws organizations describe-organizational-unit \
---organizational-unit-id ou-bim7-0s1nqy2w \
---profile awssecadmin
+# Describe the organization
+aws organizations describe-organization --profile awssecadmin
+
+# Describe the specified organizational unit
+aws organizations describe-organizational-unit --organizational-unit-id ou-bim7-0s1nqy2w --profile awssecadmin
