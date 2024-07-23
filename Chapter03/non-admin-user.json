@@ -1,0 +1,17 @@
+{
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Sid":"DelegateCMKAccessFrom201882936474",
+         "Effect":"Allow",
+         "Action":[
+            "kms:Encrypt",
+            "kms:Decrypt",
+            "kms:ReEncrypt*",
+            "kms:GenerateDataKey*",
+            "kms:DescribeKey"
+         ],
+         "Resource":"arn:aws:kms:us-east-1:201882936474:key/24ce962a-ee5e-411e-9cb6-ebbee39e253c"
+      }
+   ]
+}

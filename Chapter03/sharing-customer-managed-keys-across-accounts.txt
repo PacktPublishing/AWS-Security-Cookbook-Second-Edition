@@ -1,0 +1,1 @@
+aws kms encrypt --plaintext "$(echo -n 'hello heartin' | base64)" --key-id arn:aws:kms:us-east-1:201882936474:key/24ce962a-ee5e-411e-9cb6-ebbee39e253c --profile testprofilenopermission 
