@@ -1,0 +1,3 @@
+aws s3 cp image-heartin-k.png s3://awsseccookbook/image-heartin-k.png --sse aws:kms --sse-kms-key-id cd6b3dff-cfe1-45c2-b4f8-b3555d5086df --profile awssecadmin
+aws s3 cp image-heartin-k.png s3://awsseccookbook/imageheartin-k.png --sse-c AES256 --sse-c-key 12345678901234567890123456789012 --profile awssecadmin
+aws s3 cp s3://awsseccookbook/image-heartin-k.png imageheartin-k1.png --sse-c AES256 --sse-c-key 12345678901234567890123456789012 --profile awssecadmin

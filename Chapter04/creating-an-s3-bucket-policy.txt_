@@ -1,0 +1,2 @@
+aws s3api put-bucket-policy --bucket awsseccbbucketpolicy --policy file://bucket-policy-allow-list.json --profile AwsSecCbAdmin
+aws s3 ls awsseccbbucketpolicy --profile AwsSecCbUser
