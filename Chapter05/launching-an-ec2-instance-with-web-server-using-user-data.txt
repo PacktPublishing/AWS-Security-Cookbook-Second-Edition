@@ -1,0 +1,15 @@
+#!/bin/bash 
+
+sudo su 
+
+yum update -y 
+
+yum install -y httpd 
+
+cd /var/www/html 
+
+echo "<html><h1>Cloudericks Web Server</h1></html>" > index.html 
+
+systemctl start httpd.service 
+
+systemctl enable httpd.service
