@@ -1,0 +1,15 @@
+aws cognito-idp initiate-auth --auth-flow USER_PASSWORD_AUTH --auth-parameters USERNAME=<username>,PASSWORD=<password> --client-id <client-id> --region <region> 
+
+aws cognito-idp admin-respond-to-auth-challenge --user-pool-id <user-pool-id> --client-id <client-id> --challenge-name NEW_PASSWORD_REQUIRED --challenge-responses NEW_PASSWORD=<new-password>,USERNAME=<username> --session <session> --region <region> 
+
+aws cognito-identity get-id --identity-pool-id <identity-pool-id> --logins "cognito-idp.<region>.amazonaws.com/<user-pool-id>=<id-token>" --region <region>
+
+aws cognito-identity get-credentials-for-identity --identity-id <identity-id> --logins "cognito-idp.<region>.amazonaws.com/<user-pool-id>=<id-token>" --region <region> 
+
+aws configure set aws_access_key_id <access-key> 
+
+aws configure set aws_secret_access_key <secret-key> 
+
+aws configure set aws_session_token <session-token> 
+
+aws s3 ls
