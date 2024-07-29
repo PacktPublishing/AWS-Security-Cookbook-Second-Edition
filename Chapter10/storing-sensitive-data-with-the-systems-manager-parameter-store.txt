@@ -1,0 +1,1 @@
+aws ssm get-parameters --names MySecureParameter --with-decryption --region us-east-1
