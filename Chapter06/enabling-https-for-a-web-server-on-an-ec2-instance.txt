@@ -1,0 +1,9 @@
+sudo yum install -y mod_ssl
+
+sudo openssl genrsa -out /etc/pki/tls/private/localhost.key 2048
+
+sudo openssl req -new -key /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.csr
+
+sudo openssl x509 -req -days 365 -in /etc/pki/tls/certs/localhost.csr -signkey /etc/pki/tls/private/localhost.key -out /etc/pki/tls/certs/localhost.crt
+
+sudo systemctl restart httpd
